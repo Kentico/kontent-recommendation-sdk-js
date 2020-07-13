@@ -1,8 +1,9 @@
-import { ListContentTypesQuery } from '../queries';
+import { IRecommendItemsQueryOptions } from '../models';
+import { DataQuery, RecommendItemsQuery } from '../queries';
 import { IMappingService } from '../services';
 
 export interface IRecommenderClient {
     mappingService: IMappingService;
 
-    listContentTypes(): ListContentTypesQuery;
+    recommendItems(): DataQuery<RecommendItemsQuery, IRecommendItemsQueryOptions>;
 }

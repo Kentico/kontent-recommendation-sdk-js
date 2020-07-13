@@ -1,15 +1,14 @@
-import {
-    AssetsMapper,
-    assetsMapper } from '../mappers';
+import { RecommendItemsMapper } from '../mappers';
+
 
 export interface IMappingService {
-    assetsMapper: AssetsMapper;
+    recommendItemsMapper: RecommendItemsMapper;
 }
 
 export class MappingService implements IMappingService {
-    public assetsMapper: AssetsMapper;
+    public recommendItemsMapper: RecommendItemsMapper;
 
     constructor() {
-        this.assetsMapper = assetsMapper;
+        this.recommendItemsMapper = new RecommendItemsMapper();
     }
 }

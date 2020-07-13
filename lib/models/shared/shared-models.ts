@@ -6,15 +6,7 @@ export namespace SharedModels {
         _raw: TContract;
     }
 
-    export class Pagination {
-        constructor(
-            public continuationToken: string | null,
-            public nextPage: string | null
-        ) { }
-    }
-
     export class RecommenderBaseError extends BaseKontentError {
-
 
         constructor(data:
             {

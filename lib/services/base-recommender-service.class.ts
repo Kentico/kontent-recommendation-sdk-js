@@ -10,19 +10,18 @@ import {
     mapBaseKontentError,
     urlHelper,
 } from '@kentico/kontent-core';
-import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { IRecommenderClientConfig } from '../config/imanagement-client-config.interface';
-import { SharedContracts } from '../contracts';
 import { IRecommenderInternalQueryConfig, IRecommenderQueryConfig, SharedModels } from '../models';
+import { Observable, throwError } from 'rxjs';
 
 export abstract class BaseContentManagementQueryService {
 
     /**
      * Default base url
      */
-    private readonly defaultBaseCMUrl: string = 'https://manage.kontent.ai/v2/projects';
+    private readonly defaultBaseCMUrl: string = 'https://recommender-api-v2.azurewebsites.net/api/v2/';
 
     constructor(
         protected readonly config: IRecommenderClientConfig,
@@ -91,8 +90,8 @@ export abstract class BaseContentManagementQueryService {
             )
             .pipe(
                 catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapContentManagementError(error.mappedError));
-                })
+                    return throwError(this.mapRecommenderError(error.mappedError));
+                }),
             );
     }
 
@@ -123,7 +122,7 @@ export abstract class BaseContentManagementQueryService {
             )
             .pipe(
                 catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapContentManagementError(error.mappedError));
+                    return throwError(this.mapRecommenderError(error.mappedError));
                 })
             );
     }
@@ -157,7 +156,7 @@ export abstract class BaseContentManagementQueryService {
             )
             .pipe(
                 catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapContentManagementError(error.mappedError));
+                    return throwError(this.mapRecommenderError(error.mappedError));
                 })
             );
     }
@@ -191,7 +190,7 @@ export abstract class BaseContentManagementQueryService {
             )
             .pipe(
                 catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapContentManagementError(error.mappedError));
+                    return throwError(this.mapRecommenderError(error.mappedError));
                 })
             );
     }
@@ -224,31 +223,15 @@ export abstract class BaseContentManagementQueryService {
             )
             .pipe(
                 catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapContentManagementError(error.mappedError));
+                    return throwError(this.mapRecommenderError(error.mappedError));
                 })
             );
     }
 
-    private mapContentManagementError(
+    private mapRecommenderError(
         error: BaseKontentError | any
     ): SharedModels.RecommenderBaseError | any {
         if (error instanceof BaseKontentError) {
-            let validationErrors: SharedModels.ValidationError[] = [];
-            if (
-                error.originalError &&
-                error.originalError.response &&
-                error.originalError.response.data &&
-                error.originalError.response.data.validation_errors
-            ) {
-                const rawValidationErrors: SharedContracts.IValidationErrorContract[] =
-                    error.originalError.response.data.validation_errors;
-                validationErrors = rawValidationErrors.map(
-                    m =>
-                        new SharedModels.ValidationError({
-                            message: m.message
-                        })
-                );
-            }
 
             return new SharedModels.RecommenderBaseError({
                 errorCode: error.errorCode,
@@ -256,7 +239,6 @@ export abstract class BaseContentManagementQueryService {
                 originalError: error.originalError,
                 requestId: error.requestId,
                 specificCode: error.specificCode,
-                validationErrors: validationErrors
             });
         }
         return error;
@@ -276,10 +258,10 @@ export abstract class BaseContentManagementQueryService {
         };
     }
     /**
-     * Gets base URL of the request including the project Id
+     * Gets base URL of the request
      */
     private getBaseUrl(): string {
-        return this.GetEndpointUrl() + '/' + this.config.projectId;
+        return this.GetEndpointUrl();
     }
 
     /**

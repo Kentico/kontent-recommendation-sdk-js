@@ -1,13 +1,13 @@
 import { IHttpService, ISDKInfo } from '@kentico/kontent-core';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { IRecommenderClientConfig } from '../config/imanagement-client-config.interface';
-import { TaxonomyContracts } from '../contracts';
-import { taxonomyMappper } from '../mappers';
-import { IRecommenderQueryConfig, TaxonomyModels } from '../models';
-import { TaxonomyResponses } from '../responses';
+import { IRecommendedContentItemContract } from '../contracts';
+import { recommendItemsMapper } from '../mappers';
+import { IRecommenderQueryConfig, IRecommendItemsQueryOptions } from '../models';
+import { RecommendItemsResponse } from '../responses';
 import { BaseContentManagementQueryService } from './base-recommender-service.class';
+import { Observable } from 'rxjs';
 
 export class RecommenderQueryService extends BaseContentManagementQueryService {
     constructor(
@@ -18,25 +18,14 @@ export class RecommenderQueryService extends BaseContentManagementQueryService {
         super(config, httpService, sdkInfo);
     }
 
-    addTaxonomy(
+    recommendItems(
         url: string,
-        data: TaxonomyModels.IAddTaxonomyRequestModel,
+        data: IRecommendItemsQueryOptions,
         config: IRecommenderQueryConfig
-    ): Observable<TaxonomyResponses.AddTaxonomyResponse> {
-        return this.postResponse<TaxonomyContracts.IAddTaxonomyResponseContract>(url, data, {}, config).pipe(
+    ): Observable<RecommendItemsResponse> {
+        return this.postResponse<IRecommendedContentItemContract[]>(url, data, {}, config).pipe(
             map((response) => {
-                return taxonomyMappper.mapAddTaxonomyResponse(response);
-            })
-        );
-    }
-
-    listTaxonomies(
-        url: string,
-        config: IRecommenderQueryConfig
-    ): Observable<TaxonomyResponses.TaxonomyListResponse> {
-        return this.getResponse<TaxonomyContracts.ITaxonomyContract[]>(url, {}, config).pipe(
-            map((response) => {
-                return taxonomyMappper.mapListingTaxonomysResponse(response);
+                return recommendItemsMapper.recommendItemsResponse(response);
             })
         );
     }

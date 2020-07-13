@@ -1,10 +1,10 @@
 import { HttpService } from '@kentico/kontent-core';
 
 import { IRecommenderClientConfig } from '../config';
-import {
-    ListContentTypesQuery} from '../queries';
+import { IRecommendItemsQueryOptions } from '../models';
+import { DataQuery, RecommendItemsQuery } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
-import { RecommenderQueryService, IMappingService, MappingService } from '../services';
+import { IMappingService, MappingService, RecommenderQueryService } from '../services';
 import { IRecommenderClient } from './irecommender-client.interface';
 
 export class RecommenderClient implements IRecommenderClient {
@@ -24,7 +24,9 @@ export class RecommenderClient implements IRecommenderClient {
         );
     }
 
-    listContentTypes(): ListContentTypesQuery {
-        return new ListContentTypesQuery(this.config, this.queryService);
+    recommendItems(): DataQuery<RecommendItemsQuery, IRecommendItemsQueryOptions> {
+        return new DataQuery(this.config, this.queryService, (xConfig, xService, data) => {
+            return new RecommendItemsQuery(xConfig, xService, data);
+        });
     }
 }

@@ -1,19 +1,18 @@
 import { IQueryParameter, Parameters, IHeader } from '@kentico/kontent-core';
-import { Observable } from 'rxjs';
 
 import { IRecommenderClientConfig } from '../config/imanagement-client-config.interface';
-import { RecommenderApiEndpoints, contentManagementApiEndpoints, IRecommenderQueryConfig } from '../models';
+import { RecommenderApiEndpoints, recommenderApiEndpoints, IRecommenderQueryConfig } from '../models';
 import { BaseResponses } from '../responses';
 import { RecommenderQueryService } from '../services';
+import { Observable } from 'rxjs';
 
-export abstract class BaseQuery<TResponse extends BaseResponses.IContentManagementResponse> {
+export abstract class BaseQuery<TResponse extends BaseResponses.IRecommenderResponse> {
     protected readonly queryConfig: IRecommenderQueryConfig = {
         headers: []
     };
     protected readonly parameters: IQueryParameter[] = [];
-    protected readonly apiEndpoints: RecommenderApiEndpoints = contentManagementApiEndpoints;
+    protected readonly apiEndpoints: RecommenderApiEndpoints = recommenderApiEndpoints;
     protected customUrl?: string;
-    protected addSlashToUrl: boolean = true;
 
     constructor(
         protected config: IRecommenderClientConfig,
@@ -30,7 +29,7 @@ export abstract class BaseQuery<TResponse extends BaseResponses.IContentManageme
         }
 
         // use original url
-        return this.queryService.getFullUrl(this.getAction(), this.getParameters(), this.addSlashToUrl);
+        return this.queryService.getFullUrl(this.getAction(), this.getParameters(), false);
     }
 
     /**
