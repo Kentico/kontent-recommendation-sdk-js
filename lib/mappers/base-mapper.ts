@@ -1,8 +1,8 @@
 import { IBaseResponse } from '@kentico/kontent-core';
 
-import { BaseResponses } from '../responses';
+import { BaseResponses, EmptyResponse } from '../responses';
 
-export abstract class BaseMapper {
+export class BaseMapper {
 
     mapResponseDebug(
         baseResponse: IBaseResponse<any>
@@ -15,5 +15,11 @@ export abstract class BaseMapper {
             response: baseResponse
         };
     }
+
+    getEmptyResponse(baseResponse: IBaseResponse<void>): EmptyResponse {
+        return new EmptyResponse(baseResponse);
+    }
 }
+
+export const baseMapper = new BaseMapper();
 
