@@ -1,17 +1,19 @@
-import { EmptyResponse } from '../../lib';
-import { getTestClientWithJson, liveClient } from '../setup';
+import { EmptyResponse, TrackVisitorQuery } from '../../lib';
+import { getTestClientWithJson } from '../setup';
 import * as fakeResponse from './fake-empty-response.json';
 
 describe('Track visitor', () => {
     let response: EmptyResponse;
+    let query: TrackVisitorQuery;
 
     beforeAll((done) => {
-        getTestClientWithJson(fakeResponse)
+        query = getTestClientWithJson(fakeResponse)
             .trackVisitor()
             .withData({
                 visitId: 'x',
-            })
-            .toObservable()
+            });
+
+           query.toObservable()
             .subscribe((result) => {
                 response = result;
                 done();
@@ -19,12 +21,7 @@ describe('Track visitor', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = liveClient
-            .trackVisitor()
-            .withData({
-                visitId: 'x',
-            })
-            .getUrl();
+        const url = query.getUrl();
 
         expect(url).toEqual(
             `https://recommender-api-v2.azurewebsites.net/api/v2/track/visitor?visitId=x`

@@ -1,29 +1,40 @@
-import { RecommendItemsResponse } from '../../lib';
+import { RecommendItemsResponse, RecommendItemsQuery } from '../../lib';
 import * as fakeResponse from './recommend-items-fake-ok-response.json';
-import { liveClient, getTestClientWithJson } from '../setup';
+import { getTestClientWithJson } from '../setup';
 
 describe('Recommend items', () => {
     let response: RecommendItemsResponse;
+    let query: RecommendItemsQuery;
 
     beforeAll((done) => {
-        getTestClientWithJson(fakeResponse).recommendItems()
-            .withData({
-                visitId: 'x',
-                currentItemCodename: 'warrior',
-                requestedTypeCodename: 'movie',
-                responseLimit: 5
-            })
-            .toObservable()
-            .subscribe(result => {
-                response = result;
-                done();
-            });
+        query = getTestClientWithJson(fakeResponse).recommendItems().withData({
+            visitId: 'x',
+            currentItemCodename: 'warrior',
+            requestedTypeCodename: 'movie',
+            responseLimit: 5
+        });
+
+        query.toObservable().subscribe((result) => {
+            response = result;
+            done();
+        });
     });
 
     it(`url should be correct`, () => {
-        const url = liveClient.recommendItems().withData({} as any).getUrl();
+        const url = query.getUrl();
 
         expect(url).toEqual(`https://recommender-api-v2.azurewebsites.net/api/v2/recommend/items`);
+    });
+
+    it(`request data should be correct`, () => {
+        const data = query.data;
+
+        expect(data).toEqual({
+            visitId: 'x',
+            currentItemCodename: 'warrior',
+            requestedTypeCodename: 'movie',
+            responseLimit: 5
+        });
     });
 
     it(`response should be instance of RecommendItemsResponse class`, () => {
@@ -41,11 +52,10 @@ describe('Recommend items', () => {
     it(`data should be mapped`, () => {
         expect(response.data.length).toEqual(fakeResponse.length);
 
-        const originalData = fakeResponse.map(m => m.codename);
+        const originalData = fakeResponse.map((m) => m.codename);
 
         for (const recommendedItem of response.data) {
             expect(originalData).toContain(recommendedItem.codename);
         }
     });
 });
-

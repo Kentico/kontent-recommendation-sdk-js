@@ -1,16 +1,16 @@
 export interface ITrackVisitQueryOptions {
     visitId: string;
-    contentItemId: string;
+    currentItemCodename: string;
 }
 
 export interface ITrackConversionQueryOptions {
     visitId: string;
-    contentItemId: string;
+    currentItemCodename: string;
 }
 
 export interface ITrackPortionQueryOptions {
     visitId: string;
-    contentItemId: string;
+    currentItemCodename: string;
     portionPercentage?: number;
 }
 

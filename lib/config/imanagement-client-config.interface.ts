@@ -7,7 +7,7 @@ export interface IRecommenderClientConfig {
     projectId: string;
 
     /**
-     * Content management API key
+     * Recommendation API key
      */
     apiKey: string;
 

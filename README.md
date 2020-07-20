@@ -1,28 +1,98 @@
 # Kontent Recommender Javascript SDK
 
-> Javascript SDK for the [Kontent Recommendation SDK](https://developer.kenticocloud.com/v1/reference#content-management-api-v2). Helps you manage content in your [Kentico Kontent](https://kontent.ai/) projects. Supports both `node.js` and `browsers`.
+> Javascript SDK for the `Kontent Recommendation SDK`. Work in `node.js` and `browsers`.
 
 ## Getting started
 
-To get started, you'll first need to have access to your [Kentico Kontent](https://kontent.ai/) project where you need to enable Content management API and generate `access token` that will be used to authenticate all requests made by this library.
+To get started, you'll first need to have access to your [Kentico Kontent](https://kontent.ai/) project and setup recommendation.
 
 ### Installation
 
-This library has a peer dependency on `rxjs`which means you need to install it as well. You install it using `npm` or use it directly in browser using one of the `cdn` bundles. 
-
-#### npm
-
 ```
 npm i rxjs --save
-npm i todo --save
+npm i @kentico/kontent-recommender --save
 ```
 
-### Making the first request
+### API
 
-The following code example shows how to create new content item in your Kentico Kontent project.
+#### Recommend Items 
 
-```javascript
-todo
+```typescript
+const client = new RecommenderClient({
+    projectId: 'xxx',
+    apiKey: 'yyy'
+});
+
+ await client.recommendItems()
+    .withData({
+        currentItemCodename: 'x',
+        requestedTypeCodename: 'y',
+        responseLimit: 5,
+        visitId: 'z',
+        recommendationSettings: {
+            // settings configuration
+        }
+        }).toPromise();
+```
+
+#### Track conversion 
+
+```typescript
+const client = new RecommenderClient({
+    projectId: 'xxx',
+    apiKey: 'yyy'
+});
+
+await client.trackConversion()
+    .withData({
+        visitId: 'z',
+        currentItemCodename: 'x'
+    }).toPromise();
+```
+
+#### Track portion 
+
+```typescript
+const client = new RecommenderClient({
+    projectId: 'xxx',
+    apiKey: 'yyy'
+});
+
+await client.trackPortion()
+    .withData({
+        visitId: 'z',
+        currentItemCodename: 'x',
+        portionPercentage: 50
+    }).toPromise();
+```
+
+#### Track visit 
+
+```typescript
+const client = new RecommenderClient({
+    projectId: 'xxx',
+    apiKey: 'yyy'
+});
+
+await client.trackVisit()
+    .withData({
+        visitId: 'z',
+        currentItemCodename: 'x',
+    }).toPromise();
+```
+
+#### Track visitor 
+
+```typescript
+const client = new RecommenderClient({
+    projectId: 'xxx',
+    apiKey: 'yyy'
+});
+
+await client.trackVisitor()
+    .withData({
+        visitId: 'z',
+    }).toPromise();
 ```
 
 If you are using `UMD` bundles directly in browsers, you can find this library under `KontentRecommender` global variable. 
@@ -30,10 +100,10 @@ If you are using `UMD` bundles directly in browsers, you can find this library u
 
 ### Configuration
 
-The `ManagementClient` contains several configuration options:
+The `RecommenderClient` contains several configuration options:
 
-```javascript
-const client = new ManagementClient({
+```typescript
+const client = new RecommenderClient({
     // configuration options
 });
 ```
@@ -41,14 +111,11 @@ const client = new ManagementClient({
 | Option  | Default | Description |
 | ------------- | ------------- | ------------- |
 | `projectId` | N/A | **Required** - Id of your Kentico Kontent project  |
-| `apiKey` | N/A  | **Required** - Content management API Token  |
-| `baseUrl` | https://manage.kontent.ai/v2/projects  | Base URL of REST api. Can be useful if you are using custom proxy or for testing purposes |
+| `apiKey` | N/A  | **Required** - Recommendation API Token  |
+| `baseUrl` | https://recommender-api-v2.azurewebsites.net/api/v2  | Base URL of REST api. Can be useful if you are using custom proxy or for testing purposes. |
 | `retryStrategy` | undefined |  Retry strategy configuration. If not set, default strategy is used. |
 | `httpService` | HttpService  | Used to inject implementation of `IHttpService` used to make HTTP request across network. Can also be useful for testing purposes by returning specified responses. |
-
-### Testing
-
-> If you want to mock http responses, it is possible to use [external implementation of configurable Http Service](../core/README.md#testing) as a part of the [client configuration](#configuration).
+| `isDeveloperMode` | false  | Enable to log extra details in console log|
 
 ### Troubleshooting & feedback
 

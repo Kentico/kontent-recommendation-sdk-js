@@ -1,18 +1,20 @@
-import { EmptyResponse } from '../../lib';
-import { getTestClientWithJson, liveClient } from '../setup';
+import { EmptyResponse, TrackConversionQuery } from '../../lib';
+import { getTestClientWithJson } from '../setup';
 import * as fakeResponse from './fake-empty-response.json';
 
 describe('Track conversion', () => {
     let response: EmptyResponse;
+    let query: TrackConversionQuery;
 
     beforeAll((done) => {
-        getTestClientWithJson(fakeResponse)
+        query = getTestClientWithJson(fakeResponse)
             .trackConversion()
             .withData({
                 visitId: 'x',
-                contentItemId: 'movie'
-            })
-            .toObservable()
+                currentItemCodename: 'movie'
+            });
+
+            query.toObservable()
             .subscribe((result) => {
                 response = result;
                 done();
@@ -20,17 +22,20 @@ describe('Track conversion', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = liveClient
-            .trackConversion()
-            .withData({
-                visitId: 'x',
-                contentItemId: 'movie'
-            })
-            .getUrl();
+        const url = query.getUrl();
 
         expect(url).toEqual(
             `https://recommender-api-v2.azurewebsites.net/api/v2/track/conversion`
         );
+    });
+
+    it(`request data should be correct`, () => {
+        const data = query.data;
+
+        expect(data).toEqual({
+            visitId: 'x',
+            currentItemCodename: 'movie'
+        });
     });
 
     it(`response should be instance of EmptyResponse class`, () => {

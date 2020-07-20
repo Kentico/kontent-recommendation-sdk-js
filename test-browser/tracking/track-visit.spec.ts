@@ -1,17 +1,20 @@
-import { EmptyResponse } from '../../lib';
-import { getTestClientWithJson, liveClient } from '../setup';
+import { EmptyResponse, TrackVisitQuery } from '../../lib';
+import { getTestClientWithJson } from '../setup';
 import * as fakeResponse from './/fake-empty-response.json';
 
 describe('Track visit', () => {
     let response: EmptyResponse;
+    let query: TrackVisitQuery;
 
     beforeAll((done) => {
-        getTestClientWithJson(fakeResponse)
+        query = getTestClientWithJson(fakeResponse)
             .trackVisit()
             .withData({
                 visitId: 'x',
-                contentItemId: 'movie'
-            })
+                currentItemCodename: 'movie'
+            });
+
+        query
             .toObservable()
             .subscribe((result) => {
                 response = result;
@@ -20,17 +23,20 @@ describe('Track visit', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = liveClient
-            .trackVisit()
-            .withData({
-                visitId: 'x',
-                contentItemId: 'movie'
-            })
-            .getUrl();
+        const url = query.getUrl();
 
         expect(url).toEqual(
             `https://recommender-api-v2.azurewebsites.net/api/v2/track/visit`
         );
+    });
+
+    it(`request data should be correct`, () => {
+        const data = query.data;
+
+        expect(data).toEqual({
+            visitId: 'x',
+            currentItemCodename: 'movie'
+        });
     });
 
     it(`response should be instance of EmptyResponse class`, () => {

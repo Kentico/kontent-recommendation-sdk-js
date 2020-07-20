@@ -1,18 +1,21 @@
-import { EmptyResponse } from '../../lib';
-import { getTestClientWithJson, liveClient } from '../setup';
+import { EmptyResponse, TrackPortionQuery } from '../../lib';
+import { getTestClientWithJson } from '../setup';
 import * as fakeResponse from './fake-empty-response.json';
 
 describe('Track portion', () => {
     let response: EmptyResponse;
+    let query: TrackPortionQuery;
 
     beforeAll((done) => {
-        getTestClientWithJson(fakeResponse)
+        query = getTestClientWithJson(fakeResponse)
             .trackPortion()
             .withData({
                 visitId: 'x',
-                contentItemId: 'movie',
+                currentItemCodename: 'movie',
                 portionPercentage: 9
-            })
+            });
+
+        query
             .toObservable()
             .subscribe((result) => {
                 response = result;
@@ -21,18 +24,21 @@ describe('Track portion', () => {
     });
 
     it(`url should be correct`, () => {
-        const url = liveClient
-            .trackPortion()
-            .withData({
-                visitId: 'x',
-                contentItemId: 'movie',
-                portionPercentage: 9
-            })
-            .getUrl();
+        const url = query.getUrl();
 
         expect(url).toEqual(
             `https://recommender-api-v2.azurewebsites.net/api/v2/track/portion`
         );
+    });
+
+    it(`request data should be correct`, () => {
+        const data = query.data;
+
+        expect(data).toEqual({
+            visitId: 'x',
+            currentItemCodename: 'movie',
+            portionPercentage: 9
+        });
     });
 
     it(`response should be instance of EmptyResponse class`, () => {
