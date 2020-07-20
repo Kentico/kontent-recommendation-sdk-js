@@ -1,3 +1,10 @@
+[![npm version](https://badge.fury.io/js/%40kentico%2Fkontent-recommender.svg)](https://badge.fury.io/js/%40kentico%2Fkontent-recommender)
+[![Build Status](https://api.travis-ci.com/Kentico/kontent-recommender-sdk-js.svg?branch=master)](https://travis-ci.com/Kentico/kontent-recommender-sdk-js)
+[![CircleCI](https://circleci.com/gh/Kentico/kontent-recommender-sdk-js/tree/master.svg?style=svg)](https://circleci.com/gh/Kentico/kontent-recommender-sdk-js/tree/master)
+[![Known Vulnerabilities](https://snyk.io/test/github/Kentico/kontent-recommender-sdk-js/badge.svg)](https://snyk.io/test/github/kentico/kontent-recommender-sdk-js)
+[![GitHub license](https://img.shields.io/github/license/Kentico/kontent-recommender-sdk-js.svg)](https://github.com/Kentico/kontent-recommender-sdk-js)
+![Gzip browser bundle](https://img.badgesize.io/https://cdn.jsdelivr.net/npm/@kentico/kontent-recommender/_bundles/kontent-recommender.browser.umd.min.js?compression=gzip)
+
 # Kontent Recommender Javascript SDK
 
 > Javascript SDK for the `Kontent Recommendation SDK`. Works in `node.js` and `browsers`.
