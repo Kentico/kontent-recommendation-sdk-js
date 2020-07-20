@@ -35,7 +35,7 @@ const client = new RecommenderClient({
         }).toPromise();
 ```
 
-#### Track conversion 
+#### Track Conversion 
 
 ```typescript
 const client = new RecommenderClient({
@@ -50,7 +50,7 @@ await client.trackConversion()
     }).toPromise();
 ```
 
-#### Track portion 
+#### Track Portion 
 
 ```typescript
 const client = new RecommenderClient({
@@ -66,7 +66,7 @@ await client.trackPortion()
     }).toPromise();
 ```
 
-#### Track visit 
+#### Track Visit 
 
 ```typescript
 const client = new RecommenderClient({
@@ -81,7 +81,7 @@ await client.trackVisit()
     }).toPromise();
 ```
 
-#### Track visitor 
+#### Track Visitor 
 
 ```typescript
 const client = new RecommenderClient({
