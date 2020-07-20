@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/Kentico/kontent-recommendation-sdk-js/compare/v0.0.2...v0.0.3) (2020-07-20)
+
+
+### Features
+
+* renames recommender to recommendation ([9892a12](https://github.com/Kentico/kontent-recommendation-sdk-js/commit/9892a12c9e0d2bb2eb58dcb47a152c70fcfec65f))
+* updates deps ([8ab25e6](https://github.com/Kentico/kontent-recommendation-sdk-js/commit/8ab25e62918bf0596b4d8e56d8a31c8f15f02b92))
+
 ### 0.0.2 (2020-07-20)
 
 
