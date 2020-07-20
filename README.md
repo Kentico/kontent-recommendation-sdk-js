@@ -1,6 +1,6 @@
 # Kontent Recommender Javascript SDK
 
-> Javascript SDK for the `Kontent Recommendation SDK`. Work in `node.js` and `browsers`.
+> Javascript SDK for the `Kontent Recommendation SDK`. Works in `node.js` and `browsers`.
 
 ## Getting started
 
