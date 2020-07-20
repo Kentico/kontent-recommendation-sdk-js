@@ -31,7 +31,7 @@ describe('Track portion', () => {
             .getUrl();
 
         expect(url).toEqual(
-            `https://recommender-api-v2.azurewebsites.net/api/v2/track/portion?visitId=x&contentItemId=movie&portionPercentage=9`
+            `https://recommender-api-v2.azurewebsites.net/api/v2/track/portion`
         );
     });
 

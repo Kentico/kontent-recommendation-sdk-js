@@ -16,10 +16,10 @@ export class TrackConversionQuery extends BaseQuery<EmptyResponse> {
     }
 
     toObservable(): Observable<EmptyResponse> {
-        return this.queryService.trackConversion(this.getUrl(), this.queryConfig);
+        return this.queryService.trackConversion(this.getUrl(), this.data, this.queryConfig);
     }
 
     protected getAction(): string {
-        return this.apiEndpoints.trackConversion(this.data.visitId, this.data.contentItemId);
+        return this.apiEndpoints.trackConversion();
     }
 }

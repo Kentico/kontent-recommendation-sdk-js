@@ -29,7 +29,7 @@ describe('Track conversion', () => {
             .getUrl();
 
         expect(url).toEqual(
-            `https://recommender-api-v2.azurewebsites.net/api/v2/track/conversion?visitId=x&contentItemId=movie`
+            `https://recommender-api-v2.azurewebsites.net/api/v2/track/conversion`
         );
     });
 

@@ -16,10 +16,10 @@ export class TrackPortionQuery extends BaseQuery<EmptyResponse> {
     }
 
     toObservable(): Observable<EmptyResponse> {
-        return this.queryService.trackPortion(this.getUrl(), this.queryConfig);
+        return this.queryService.trackPortion(this.getUrl(), this.data, this.queryConfig);
     }
 
     protected getAction(): string {
-        return this.apiEndpoints.trackPortion(this.data.visitId, this.data.contentItemId, this.data.portionPercentage);
+        return this.apiEndpoints.trackPortion();
     }
 }

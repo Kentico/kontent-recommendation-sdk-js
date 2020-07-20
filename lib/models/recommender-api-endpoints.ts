@@ -5,22 +5,16 @@ export class RecommenderApiEndpoints {
         return `recommend/items`;
     }
 
-    trackVisit(visitId: string, contentItemId: string): string {
-        return `track/visit?visitId=${visitId}&contentItemId=${contentItemId}`;
+    trackVisit(): string {
+        return `track/visit`;
     }
 
-    trackConversion(visitId: string, contentItemId: string): string {
-        return `track/conversion?visitId=${visitId}&contentItemId=${contentItemId}`;
+    trackConversion(): string {
+        return `track/conversion`;
     }
 
-    trackPortion(visitId: string, contentItemId: string, portionPercentage?: number): string {
-        let url = `track/portion?visitId=${visitId}&contentItemId=${contentItemId}`;
-
-        if (portionPercentage) {
-            url += `&portionPercentage=${portionPercentage}`;
-        }
-
-        return url;
+    trackPortion(): string {
+        return `track/portion`;
     }
 
     trackVisitor(visitId: string): string {

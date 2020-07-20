@@ -16,10 +16,10 @@ export class TrackVisitQuery extends BaseQuery<EmptyResponse> {
     }
 
     toObservable(): Observable<EmptyResponse> {
-        return this.queryService.trackVisit(this.getUrl(), this.queryConfig);
+        return this.queryService.trackVisit(this.getUrl(), this.data, this.queryConfig);
     }
 
     protected getAction(): string {
-        return this.apiEndpoints.trackVisit(this.data.visitId, this.data.contentItemId);
+        return this.apiEndpoints.trackVisit();
     }
 }
