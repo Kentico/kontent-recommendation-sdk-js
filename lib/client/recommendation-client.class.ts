@@ -1,19 +1,19 @@
 import { HttpService } from '@kentico/kontent-core';
 
-import { IRecommenderClientConfig } from '../config';
+import { IRecommendationClientConfig as IRecommendationClientConfig } from '../config';
 import { IRecommendItemsQueryOptions, ITrackVisitQueryOptions, ITrackVisitorQueryOptions, ITrackPortionQueryOptions, ITrackConversionQueryOptions } from '../models';
 import { DataQuery, RecommendItemsQuery, TrackVisitQuery, TrackConversionQuery, TrackPortionQuery, TrackVisitorQuery } from '../queries';
 import { sdkInfo } from '../sdk-info.generated';
-import { IMappingService, MappingService, RecommenderQueryService } from '../services';
-import { IRecommenderClient } from './irecommender-client.interface';
+import { IMappingService, MappingService, RecommendationQueryService } from '../services';
+import { IRecommendationClient } from './irecommendation-client.interface';
 
-export class RecommenderClient implements IRecommenderClient {
-    private readonly queryService: RecommenderQueryService;
+export class RecommendationClient implements IRecommendationClient {
+    private readonly queryService: RecommendationQueryService;
 
     public readonly mappingService: IMappingService = new MappingService();
 
-    constructor(protected readonly config: IRecommenderClientConfig) {
-        this.queryService = new RecommenderQueryService(
+    constructor(protected readonly config: IRecommendationClientConfig) {
+        this.queryService = new RecommendationQueryService(
             config,
             config.httpService ? config.httpService : new HttpService(),
             {

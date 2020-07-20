@@ -7,8 +7,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* adds all tracking API queries ([14d4c3e](https://github.com/Kentico/kontent-recommender-sdk-js/commit/14d4c3e26d591082cb25c8aadfa91dc4fd83c0ea))
-* sets up readme, fixes codename prop in queries, adds data verification to tests ([60689ba](https://github.com/Kentico/kontent-recommender-sdk-js/commit/60689bad9704a24c02b71b3bbbe31dd6312c8ebf))
-* sets up sdk & adds "recommend items" API endpoint ([92fd529](https://github.com/Kentico/kontent-recommender-sdk-js/commit/92fd52959defc94fc4da89b4d72c0c462b555fd1))
-* switches conversion / portion / visit queries to use POST instead of Query params ([14226c7](https://github.com/Kentico/kontent-recommender-sdk-js/commit/14226c79daba01d55e6e0267590b44119c04a2b0))
+* adds all tracking API queries ([14d4c3e](https://github.com/Kentico/kontent-recommendation-sdk-js/commit/14d4c3e26d591082cb25c8aadfa91dc4fd83c0ea))
+* sets up readme, fixes codename prop in queries, adds data verification to tests ([60689ba](https://github.com/Kentico/kontent-recommendation-sdk-js/commit/60689bad9704a24c02b71b3bbbe31dd6312c8ebf))
+* sets up sdk & adds "recommend items" API endpoint ([92fd529](https://github.com/Kentico/kontent-recommendation-sdk-js/commit/92fd52959defc94fc4da89b4d72c0c462b555fd1))
+* switches conversion / portion / visit queries to use POST instead of Query params ([14226c7](https://github.com/Kentico/kontent-recommendation-sdk-js/commit/14226c79daba01d55e6e0267590b44119c04a2b0))
 

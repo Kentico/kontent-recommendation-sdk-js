@@ -1,14 +1,14 @@
-import { IRecommenderClientConfig } from '../config';
-import { RecommenderQueryService } from '../services';
+import { IRecommendationClientConfig } from '../config';
+import { RecommendationQueryService } from '../services';
 
 export class DataQuery<TResult, TData> {
 
     constructor(
-        protected config: IRecommenderClientConfig,
-        protected queryService: RecommenderQueryService,
+        protected config: IRecommendationClientConfig,
+        protected queryService: RecommendationQueryService,
         protected buildResult: (
-            config: IRecommenderClientConfig,
-            queryService: RecommenderQueryService,
+            config: IRecommendationClientConfig,
+            queryService: RecommendationQueryService,
             data: TData) => TResult
     ) {
     }

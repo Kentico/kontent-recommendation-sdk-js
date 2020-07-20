@@ -23,7 +23,7 @@ describe('Recommend items', () => {
     it(`url should be correct`, () => {
         const url = query.getUrl();
 
-        expect(url).toEqual(`https://recommender-api-v2.azurewebsites.net/api/v2/recommend/items`);
+        expect(url).toEqual(`http://recommend.kontent.ai/api/v2//recommend/items`);
     });
 
     it(`request data should be correct`, () => {

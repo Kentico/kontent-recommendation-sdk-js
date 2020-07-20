@@ -1,5 +1,5 @@
 
-export class RecommenderApiEndpoints {
+export class RecommendationApiEndpoints {
 
     recommendItems(): string {
         return `recommend/items`;
@@ -22,4 +22,4 @@ export class RecommenderApiEndpoints {
     }
 }
 
-export const recommenderApiEndpoints = new RecommenderApiEndpoints();
+export const recommendationApiEndpoints = new RecommendationApiEndpoints();

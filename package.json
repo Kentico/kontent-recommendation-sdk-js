@@ -1,9 +1,9 @@
 {
-  "name": "@kentico/kontent-recommender",
+  "name": "@kentico/kontent-recommendations",
   "version": "0.0.2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Kentico/kontent-recommender-sdk-js"
+    "url": "https://github.com/Kentico/kontent-recommendation-sdk-js"
   },
   "private": false,
   "author": "richard sustek",
@@ -22,6 +22,7 @@
     "Kentico SDK",
     "Kentico Recommender",
     "Kentico Recommendation",
+    "Kentico Recommendations",
     "Kentico Recommendation SDK"
   ],
   "engines": {

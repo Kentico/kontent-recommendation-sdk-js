@@ -1,22 +1,22 @@
 import { IQueryParameter, Parameters, IHeader } from '@kentico/kontent-core';
 
-import { IRecommenderClientConfig } from '../config/imanagement-client-config.interface';
-import { RecommenderApiEndpoints, recommenderApiEndpoints, IRecommenderQueryConfig } from '../models';
+import { IRecommendationClientConfig } from '../config/recommendation-client-config.interface';
+import { RecommendationApiEndpoints, recommendationApiEndpoints, IRecommendationQueryConfig } from '../models';
 import { BaseResponses } from '../responses';
-import { RecommenderQueryService } from '../services';
+import { RecommendationQueryService } from '../services';
 import { Observable } from 'rxjs';
 
-export abstract class BaseQuery<TResponse extends BaseResponses.IRecommenderResponse> {
-    protected readonly queryConfig: IRecommenderQueryConfig = {
+export abstract class BaseQuery<TResponse extends BaseResponses.IRecommendationResponse> {
+    protected readonly queryConfig: IRecommendationQueryConfig = {
         headers: []
     };
     protected readonly parameters: IQueryParameter[] = [];
-    protected readonly apiEndpoints: RecommenderApiEndpoints = recommenderApiEndpoints;
+    protected readonly apiEndpoints: RecommendationApiEndpoints = recommendationApiEndpoints;
     protected customUrl?: string;
 
     constructor(
-        protected config: IRecommenderClientConfig,
-        protected queryService: RecommenderQueryService
+        protected config: IRecommendationClientConfig,
+        protected queryService: RecommendationQueryService
     ) {}
 
     /**

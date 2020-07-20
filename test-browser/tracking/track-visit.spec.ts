@@ -26,7 +26,7 @@ describe('Track visit', () => {
         const url = query.getUrl();
 
         expect(url).toEqual(
-            `https://recommender-api-v2.azurewebsites.net/api/v2/track/visit`
+            `http://recommend.kontent.ai/api/v2//track/visit`
         );
     });
 

@@ -24,7 +24,7 @@ describe('Track visitor', () => {
         const url = query.getUrl();
 
         expect(url).toEqual(
-            `https://recommender-api-v2.azurewebsites.net/api/v2/track/visitor?visitId=x`
+            `http://recommend.kontent.ai/api/v2//track/visitor?visitId=x`
         );
     });
 

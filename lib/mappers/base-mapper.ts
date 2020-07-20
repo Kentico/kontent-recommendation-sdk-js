@@ -6,7 +6,7 @@ export class BaseMapper {
 
     mapResponseDebug(
         baseResponse: IBaseResponse<any>
-    ): BaseResponses.IRecommenderResponseDebug {
+    ): BaseResponses.IRecommendationResponseDebug {
         if (!baseResponse) {
             throw Error(`Cannot map debug model from the response`);
         }

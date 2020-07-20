@@ -1,18 +1,18 @@
 import { IBaseResponse } from '@kentico/kontent-core';
 
 export namespace BaseResponses {
-    export interface IRecommenderResponseDebug {
+    export interface IRecommendationResponseDebug {
         response: IBaseResponse<any>;
     }
 
-    export interface IRecommenderResponse {
+    export interface IRecommendationResponse {
         data: any;
         rawData: any;
-        debug: IRecommenderResponseDebug;
+        debug: IRecommendationResponseDebug;
     }
 
-    export abstract class BaseRecommenderResponse<TRawData extends any, TData extends any>
-        implements IRecommenderResponse {
-        constructor(public debug: IRecommenderResponseDebug, public rawData: TRawData, public data: TData) {}
+    export abstract class BaseRecommendationResponse<TRawData extends any, TData extends any>
+        implements IRecommendationResponse {
+        constructor(public debug: IRecommendationResponseDebug, public rawData: TRawData, public data: TData) {}
     }
 }

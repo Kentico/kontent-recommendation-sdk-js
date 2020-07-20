@@ -6,7 +6,7 @@ export namespace SharedModels {
         _raw: TContract;
     }
 
-    export class RecommenderBaseError extends BaseKontentError {
+    export class RecommendationBaseError extends BaseKontentError {
 
         constructor(data:
             {

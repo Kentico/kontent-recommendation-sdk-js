@@ -1,16 +1,16 @@
 import { Observable } from 'rxjs';
 
-import { IRecommenderClientConfig } from '../../config';
+import { IRecommendationClientConfig } from '../../config';
 import { IRecommendItemsQueryOptions } from '../../models';
 import { RecommendItemsResponse } from '../../responses';
-import { RecommenderQueryService } from '../../services';
+import { RecommendationQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
 
 export class RecommendItemsQuery extends BaseQuery<RecommendItemsResponse> {
 
   constructor(
-    protected config: IRecommenderClientConfig,
-    protected queryService: RecommenderQueryService,
+    protected config: IRecommendationClientConfig,
+    protected queryService: RecommendationQueryService,
     public data: IRecommendItemsQueryOptions,
   ) {
     super(config, queryService);

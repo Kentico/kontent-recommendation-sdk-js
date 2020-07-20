@@ -1,6 +1,6 @@
 import { IHttpService, IRetryStrategyOptions } from '@kentico/kontent-core';
 
-export interface IRecommenderClientConfig {
+export interface IRecommendationClientConfig {
     /**
      * Kentico Kontent project id
      */

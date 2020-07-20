@@ -2,7 +2,7 @@ import { IRecommendItemsQueryOptions, ITrackVisitQueryOptions, ITrackConversionQ
 import { DataQuery, RecommendItemsQuery, TrackVisitQuery, TrackConversionQuery, TrackPortionQuery, TrackVisitorQuery } from '../queries';
 import { IMappingService } from '../services';
 
-export interface IRecommenderClient {
+export interface IRecommendationClient {
     mappingService: IMappingService;
 
     recommendItems(): DataQuery<RecommendItemsQuery, IRecommendItemsQueryOptions>;

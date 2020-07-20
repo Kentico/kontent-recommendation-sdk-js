@@ -1,17 +1,17 @@
 import { IHttpService, ISDKInfo } from '@kentico/kontent-core';
 import { map } from 'rxjs/operators';
 
-import { IRecommenderClientConfig } from '../config/imanagement-client-config.interface';
+import { IRecommendationClientConfig } from '../config/recommendation-client-config.interface';
 import { IRecommendedContentItemContract } from '../contracts';
 import { recommendItemsMapper, baseMapper } from '../mappers';
-import { IRecommenderQueryConfig, IRecommendItemsQueryOptions, ITrackConversionQueryOptions, ITrackPortionQueryOptions, ITrackVisitQueryOptions } from '../models';
+import { IRecommendationQueryConfig, IRecommendItemsQueryOptions, ITrackConversionQueryOptions, ITrackPortionQueryOptions, ITrackVisitQueryOptions } from '../models';
 import { RecommendItemsResponse, EmptyResponse } from '../responses';
-import { BaseContentManagementQueryService } from './base-recommender-service.class';
+import { BaseRecommendationQueryService } from './base-recommendation-service.class';
 import { Observable } from 'rxjs';
 
-export class RecommenderQueryService extends BaseContentManagementQueryService {
+export class RecommendationQueryService extends BaseRecommendationQueryService {
     constructor(
-        protected config: IRecommenderClientConfig,
+        protected config: IRecommendationClientConfig,
         protected httpService: IHttpService,
         protected sdkInfo: ISDKInfo
     ) {
@@ -21,7 +21,7 @@ export class RecommenderQueryService extends BaseContentManagementQueryService {
     recommendItems(
         url: string,
         data: IRecommendItemsQueryOptions,
-        config: IRecommenderQueryConfig
+        config: IRecommendationQueryConfig
     ): Observable<RecommendItemsResponse> {
         return this.postResponse<IRecommendedContentItemContract[]>(url, data, {}, config).pipe(
             map((response) => {
@@ -33,7 +33,7 @@ export class RecommenderQueryService extends BaseContentManagementQueryService {
     trackVisit(
         url: string,
         data: ITrackVisitQueryOptions,
-        config: IRecommenderQueryConfig
+        config: IRecommendationQueryConfig
     ): Observable<EmptyResponse> {
         return this.postResponse<void>(url, data, {}, config).pipe(
             map((response) => {
@@ -45,7 +45,7 @@ export class RecommenderQueryService extends BaseContentManagementQueryService {
     trackConversion(
         url: string,
         data: ITrackConversionQueryOptions,
-        config: IRecommenderQueryConfig
+        config: IRecommendationQueryConfig
     ): Observable<EmptyResponse> {
         return this.postResponse<void>(url, data, {}, config).pipe(
             map((response) => {
@@ -57,7 +57,7 @@ export class RecommenderQueryService extends BaseContentManagementQueryService {
     trackPortion(
         url: string,
         data: ITrackPortionQueryOptions,
-        config: IRecommenderQueryConfig
+        config: IRecommendationQueryConfig
     ): Observable<EmptyResponse> {
         return this.postResponse<void>(url, data, {}, config).pipe(
             map((response) => {
@@ -68,7 +68,7 @@ export class RecommenderQueryService extends BaseContentManagementQueryService {
 
     trackVisitor(
         url: string,
-        config: IRecommenderQueryConfig
+        config: IRecommendationQueryConfig
     ): Observable<EmptyResponse> {
         return this.postResponse<void>(url, {}, {}, config).pipe(
             map((response) => {

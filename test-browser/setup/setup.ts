@@ -1,4 +1,4 @@
-import { IRecommenderClient, RecommenderClient } from '../../lib';
+import { IRecommendationClient, RecommendationClient } from '../../lib';
 import { TestHttpService } from '@kentico/kontent-core';
 
 export const testProjectId: string = 'b259760f-81c5-013a-05e7-69efb4b954e5';
@@ -13,24 +13,24 @@ export function useLiveTesting(): boolean {
     return false;
 }
 
-export const liveClient: IRecommenderClient = new RecommenderClient({
+export const liveClient: IRecommendationClient = new RecommendationClient({
     projectId: testProjectId,
     // tslint:disable-next-line:max-line-length
     apiKey: testProjectIdApiKey
 });
 
-export const getTestClient = (projectId: string, apiKey: string) => new RecommenderClient({
+export const getTestClient = (projectId: string, apiKey: string) => new RecommendationClient({
     apiKey: apiKey,
     projectId: projectId
 });
 
-export const getTestClientWithInvalidApiKey: IRecommenderClient = new RecommenderClient({
+export const getTestClientWithInvalidApiKey: IRecommendationClient = new RecommendationClient({
     projectId: testProjectId,
     // tslint:disable-next-line:max-line-length
     apiKey: 'xxx'
 });
 
-export const getTestClientWithBaseKontentError: (errorJson: any) => IRecommenderClient = (errorJson: any) => new RecommenderClient({
+export const getTestClientWithBaseKontentError: (errorJson: any) => IRecommendationClient = (errorJson: any) => new RecommendationClient({
     projectId: testProjectId,
     apiKey: 'xxx',
     httpService: new TestHttpService({
@@ -40,7 +40,7 @@ export const getTestClientWithBaseKontentError: (errorJson: any) => IRecommender
     })
 });
 
-export const getTestClientWithJson: (json: any) => IRecommenderClient = (json: any) => new RecommenderClient({
+export const getTestClientWithJson: (json: any) => IRecommendationClient = (json: any) => new RecommendationClient({
     projectId: testProjectId,
     apiKey: 'xxx',
     httpService: new TestHttpService({

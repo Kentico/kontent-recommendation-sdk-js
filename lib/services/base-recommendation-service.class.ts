@@ -12,19 +12,19 @@ import {
 } from '@kentico/kontent-core';
 import { catchError } from 'rxjs/operators';
 
-import { IRecommenderClientConfig } from '../config/imanagement-client-config.interface';
-import { IRecommenderInternalQueryConfig, IRecommenderQueryConfig, SharedModels } from '../models';
+import { IRecommendationClientConfig } from '../config/recommendation-client-config.interface';
+import { IRecommendationInternalQueryConfig, IRecommendationQueryConfig, SharedModels } from '../models';
 import { Observable, throwError } from 'rxjs';
 
-export abstract class BaseContentManagementQueryService {
+export abstract class BaseRecommendationQueryService {
 
     /**
      * Default base url
      */
-    private readonly defaultBaseCMUrl: string = 'https://recommender-api-v2.azurewebsites.net/api/v2/';
+    private readonly defaultBaseCMUrl: string = 'http://recommend.kontent.ai/api/v2//';
 
     constructor(
-        protected readonly config: IRecommenderClientConfig,
+        protected readonly config: IRecommendationClientConfig,
         protected readonly httpService: IHttpService,
         protected readonly sdkInfo: ISDKInfo
     ) {}
@@ -43,7 +43,7 @@ export abstract class BaseContentManagementQueryService {
      * Gets proper set of headers for given request.
      * @param config Query config
      */
-    getHeaders(config: IRecommenderQueryConfig): IHeader[] {
+    getHeaders(config: IRecommendationQueryConfig): IHeader[] {
         const headers: IHeader[] = [
             // sdk tracking header
             headerHelper.getSdkIdHeader({
@@ -69,8 +69,8 @@ export abstract class BaseContentManagementQueryService {
     protected patchResponse<TRawData>(
         url: string,
         body: any,
-        internalConfig: IRecommenderInternalQueryConfig,
-        config: IRecommenderQueryConfig
+        internalConfig: IRecommendationInternalQueryConfig,
+        config: IRecommendationQueryConfig
     ): Observable<IBaseResponse<TRawData>> {
 
         return this.httpService
@@ -90,7 +90,7 @@ export abstract class BaseContentManagementQueryService {
             )
             .pipe(
                 catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapRecommenderError(error.mappedError));
+                    return throwError(this.mapRecommendationError(error.mappedError));
                 }),
             );
     }
@@ -102,8 +102,8 @@ export abstract class BaseContentManagementQueryService {
      */
     protected getResponse<TRawData>(
         url: string,
-        internalConfig: IRecommenderInternalQueryConfig,
-        config: IRecommenderQueryConfig
+        internalConfig: IRecommendationInternalQueryConfig,
+        config: IRecommendationQueryConfig
     ): Observable<IBaseResponse<TRawData>> {
 
         return this.httpService
@@ -122,7 +122,7 @@ export abstract class BaseContentManagementQueryService {
             )
             .pipe(
                 catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapRecommenderError(error.mappedError));
+                    return throwError(this.mapRecommendationError(error.mappedError));
                 })
             );
     }
@@ -136,8 +136,8 @@ export abstract class BaseContentManagementQueryService {
     protected postResponse<TRawData>(
         url: string,
         body: any,
-        internalConfig: IRecommenderInternalQueryConfig,
-        config: IRecommenderQueryConfig,
+        internalConfig: IRecommendationInternalQueryConfig,
+        config: IRecommendationQueryConfig,
     ): Observable<IBaseResponse<TRawData>> {
         return this.httpService
             .post<BaseKontentError | any, TRawData>(
@@ -156,7 +156,7 @@ export abstract class BaseContentManagementQueryService {
             )
             .pipe(
                 catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapRecommenderError(error.mappedError));
+                    return throwError(this.mapRecommendationError(error.mappedError));
                 })
             );
     }
@@ -170,8 +170,8 @@ export abstract class BaseContentManagementQueryService {
     protected putResponse<TRawData>(
         url: string,
         body: any,
-        internalConfig: IRecommenderInternalQueryConfig,
-        config: IRecommenderQueryConfig
+        internalConfig: IRecommendationInternalQueryConfig,
+        config: IRecommendationQueryConfig
     ): Observable<IBaseResponse<TRawData>> {
         return this.httpService
             .put<BaseKontentError | any, TRawData>(
@@ -190,7 +190,7 @@ export abstract class BaseContentManagementQueryService {
             )
             .pipe(
                 catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapRecommenderError(error.mappedError));
+                    return throwError(this.mapRecommendationError(error.mappedError));
                 })
             );
     }
@@ -203,8 +203,8 @@ export abstract class BaseContentManagementQueryService {
      */
     protected deleteResponse<TRawData>(
         url: string,
-        internalConfig: IRecommenderInternalQueryConfig,
-        config: IRecommenderQueryConfig,
+        internalConfig: IRecommendationInternalQueryConfig,
+        config: IRecommendationQueryConfig,
     ): Observable<IBaseResponse<TRawData>> {
 
         return this.httpService
@@ -223,17 +223,17 @@ export abstract class BaseContentManagementQueryService {
             )
             .pipe(
                 catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapRecommenderError(error.mappedError));
+                    return throwError(this.mapRecommendationError(error.mappedError));
                 })
             );
     }
 
-    private mapRecommenderError(
+    private mapRecommendationError(
         error: BaseKontentError | any
-    ): SharedModels.RecommenderBaseError | any {
+    ): SharedModels.RecommendationBaseError | any {
         if (error instanceof BaseKontentError) {
 
-            return new SharedModels.RecommenderBaseError({
+            return new SharedModels.RecommendationBaseError({
                 errorCode: error.errorCode,
                 message: error.message,
                 originalError: error.originalError,

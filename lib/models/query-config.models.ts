@@ -1,9 +1,9 @@
 import { HttpResponseType, IHeader } from '@kentico/kontent-core';
 
-export interface IRecommenderQueryConfig {
+export interface IRecommendationQueryConfig {
     headers: IHeader[];
 }
 
-export interface IRecommenderInternalQueryConfig {
+export interface IRecommendationInternalQueryConfig {
     responseType?: HttpResponseType;
 }

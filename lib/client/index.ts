@@ -1,2 +1,2 @@
-export * from './irecommender-client.interface';
-export * from './recommender-client.class';
+export * from './irecommendation-client.interface';
+export * from './recommendation-client.class';

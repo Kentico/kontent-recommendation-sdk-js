@@ -1,7 +1,7 @@
 const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const libName = 'kontent-recommender-sdk.legacy';
+const libName = 'kontent-recommendation-sdk.legacy';
 
 module.exports = (env, argv) => ({
     entry: {
@@ -16,7 +16,7 @@ module.exports = (env, argv) => ({
         filename: libName + (argv.mode === 'production' ? '.umd.min.js' : '.umd.js'),
         libraryTarget: 'umd',
         umdNamedDefine: true,
-        library: 'KontentRecommender'
+        library: 'KontentRecommendation'
     },
     externals: [{
         'rxjs': {

@@ -1,15 +1,15 @@
 import { Observable } from 'rxjs';
 
-import { IRecommenderClientConfig } from '../../config';
+import { IRecommendationClientConfig } from '../../config';
 import { ITrackVisitQueryOptions } from '../../models';
 import { EmptyResponse } from '../../responses';
-import { RecommenderQueryService } from '../../services';
+import { RecommendationQueryService } from '../../services';
 import { BaseQuery } from '../base-query';
 
 export class TrackVisitQuery extends BaseQuery<EmptyResponse> {
     constructor(
-        protected config: IRecommenderClientConfig,
-        protected queryService: RecommenderQueryService,
+        protected config: IRecommendationClientConfig,
+        protected queryService: RecommendationQueryService,
         public data: ITrackVisitQueryOptions
     ) {
         super(config, queryService);
