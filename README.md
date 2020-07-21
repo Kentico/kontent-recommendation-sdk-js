@@ -2,7 +2,7 @@
 [![Build Status](https://api.travis-ci.com/Kentico/kontent-recommendation-sdk-js.svg?branch=master)](https://travis-ci.com/Kentico/kontent-recommendation-sdk-js)
 [![CircleCI](https://circleci.com/gh/Kentico/kontent-recommendation-sdk-js/tree/master.svg?style=svg)](https://circleci.com/gh/Kentico/kontent-recommendation-sdk-js/tree/master)
 [![Known Vulnerabilities](https://snyk.io/test/github/Kentico/kontent-recommendation-sdk-js/badge.svg)](https://snyk.io/test/github/kentico/kontent-recommendation-sdk-js)
-[![GitHub license](https://img.shields.io/github/license/Kentico/kontent-recommendation-sdk-js.svg)](https://github.com/Kentico/kontent-recommendation-sdk-js)
+[![GitHub license](https://img.shields.io/github/license/Kentico/kontent-recommendation-sdk-js.svg)](https://github.com/Kentico/kontent-recommendations-sdk-js)
 ![Gzip browser bundle](https://img.badgesize.io/https://cdn.jsdelivr.net/npm/@kentico/kontent-recommendations/_bundles/kontent-recommendation-sdk.umd.min.js?compression=gzip)
 
 # Kontent recommendation Javascript SDK
@@ -126,7 +126,7 @@ const client = new RecommendationClient({
 
 ### Troubleshooting & feedback
 
-If you have any issues or want to share your feedback, please feel free to [create an issue](https://github.com/Kentico/kontent-recommendation-sdk-js/issues/new/choose) in this GitHub repository.
+If you have any issues or want to share your feedback, please feel free to [create an issue](https://github.com/Kentico/kontent-recommendations-sdk-js/issues/new/choose) in this GitHub repository.
 
 ### Contributions
 
