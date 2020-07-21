@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/%40kentico%2Fkontent-recommendation.svg)](https://badge.fury.io/js/%40kentico%2Fkontent-recommendation)
+[![npm version](https://badge.fury.io/js/%40kentico%2Fkontent-recommendations.svg)](https://badge.fury.io/js/%40kentico%2Fkontent-recommendations)
 [![Build Status](https://api.travis-ci.com/Kentico/kontent-recommendation-sdk-js.svg?branch=master)](https://travis-ci.com/Kentico/kontent-recommendation-sdk-js)
 [![CircleCI](https://circleci.com/gh/Kentico/kontent-recommendation-sdk-js/tree/master.svg?style=svg)](https://circleci.com/gh/Kentico/kontent-recommendation-sdk-js/tree/master)
 [![Known Vulnerabilities](https://snyk.io/test/github/Kentico/kontent-recommendation-sdk-js/badge.svg)](https://snyk.io/test/github/kentico/kontent-recommendation-sdk-js)
@@ -119,7 +119,7 @@ const client = new RecommendationClient({
 | ------------- | ------------- | ------------- |
 | `projectId` | N/A | **Required** - Id of your Kentico Kontent project  |
 | `apiKey` | N/A  | **Required** - Recommendation API Token  |
-| `baseUrl` | http://recommend.kontent.ai/api/v2/  | Base URL of REST api. Can be useful if you are using custom proxy or for testing purposes. |
+| `baseUrl` | https://recommend.kontent.ai/api/v2/  | Base URL of REST api. Can be useful if you are using custom proxy or for testing purposes. |
 | `retryStrategy` | undefined |  Retry strategy configuration. If not set, default strategy is used. |
 | `httpService` | HttpService  | Used to inject implementation of `IHttpService` used to make HTTP request across network. Can also be useful for testing purposes by returning specified responses. |
 | `isDeveloperMode` | false  | Enable to log extra details in console log|
