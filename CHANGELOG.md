@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/Kentico/kontent-recommendation-sdk-js/compare/v0.0.3...v0.0.4) (2020-07-21)
+
+
+### Features
+
+* updates visitor API query to use body data ([8414a4c](https://github.com/Kentico/kontent-recommendation-sdk-js/commit/8414a4ccd84d5ae730c874f8db28b02f8f7720fd))
+
 ### [0.0.3](https://github.com/Kentico/kontent-recommendation-sdk-js/compare/v0.0.2...v0.0.3) (2020-07-20)
 
 
