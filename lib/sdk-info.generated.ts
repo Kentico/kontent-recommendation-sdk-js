@@ -1,7 +1,7 @@
-import { ISDKInfo } from '@kentico/kontent-core';
 
+import { ISDKInfo } from '@kentico/kontent-core';
 export const sdkInfo: ISDKInfo = {
     host: 'npmjs.com',
-    version: '0.0.3',
+    version: '0.0.4',
     name: '@kentico/kontent-recommendations'
 };
