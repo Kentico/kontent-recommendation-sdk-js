@@ -3,7 +3,7 @@
 [![CircleCI](https://circleci.com/gh/Kentico/kontent-recommendation-sdk-js/tree/master.svg?style=svg)](https://circleci.com/gh/Kentico/kontent-recommendation-sdk-js/tree/master)
 [![Known Vulnerabilities](https://snyk.io/test/github/Kentico/kontent-recommendation-sdk-js/badge.svg)](https://snyk.io/test/github/kentico/kontent-recommendation-sdk-js)
 [![GitHub license](https://img.shields.io/github/license/Kentico/kontent-recommendation-sdk-js.svg)](https://github.com/Kentico/kontent-recommendation-sdk-js)
-![Gzip browser bundle](https://img.badgesize.io/https://cdn.jsdelivr.net/npm/@kentico/kontent-recommendation/_bundles/kontent-recommendation.browser.umd.min.js?compression=gzip)
+![Gzip browser bundle](https://img.badgesize.io/https://cdn.jsdelivr.net/npm/@kentico/kontent-recommendations/_bundles/kontent-recommendation-sdk.umd.min.js?compression=gzip)
 
 # Kontent recommendation Javascript SDK
 
