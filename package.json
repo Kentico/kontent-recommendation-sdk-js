@@ -3,12 +3,12 @@
   "version": "0.0.4",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Kentico/kontent-recommendation-sdk-js"
+    "url": "https://github.com/Kentico/kontent-recommendations-sdk-js"
   },
   "private": false,
   "author": "richard sustek",
   "license": "MIT",
-  "description": "Official Kentico Kontent Recommendation SDK",
+  "description": "Official Kentico Kontent Recommendations SDK",
   "keywords": [
     "Kentico",
     "Kontent",
