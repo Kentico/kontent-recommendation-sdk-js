@@ -24,8 +24,16 @@ describe('Track visitor', () => {
         const url = query.getUrl();
 
         expect(url).toEqual(
-            `http://recommend.kontent.ai/api/v2//track/visitor?visitId=x`
+            `http://recommend.kontent.ai/api/v2//track/visitor`
         );
+    });
+
+    it(`request data should be correct`, () => {
+        const data = query.data;
+
+        expect(data).toEqual({
+            visitId: 'x',
+        });
     });
 
     it(`response should be instance of EmptyResponse class`, () => {

@@ -17,8 +17,8 @@ export class RecommendationApiEndpoints {
         return `track/portion`;
     }
 
-    trackVisitor(visitId: string): string {
-        return `track/visitor?visitId=${visitId}`;
+    trackVisitor(): string {
+        return `track/visitor`;
     }
 }
 

@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { IRecommendationClientConfig } from '../config/recommendation-client-config.interface';
 import { IRecommendedContentItemContract } from '../contracts';
 import { recommendItemsMapper, baseMapper } from '../mappers';
-import { IRecommendationQueryConfig, IRecommendItemsQueryOptions, ITrackConversionQueryOptions, ITrackPortionQueryOptions, ITrackVisitQueryOptions } from '../models';
+import { IRecommendationQueryConfig, IRecommendItemsQueryOptions, ITrackConversionQueryOptions, ITrackPortionQueryOptions, ITrackVisitQueryOptions, ITrackVisitorQueryOptions } from '../models';
 import { RecommendItemsResponse, EmptyResponse } from '../responses';
 import { BaseRecommendationQueryService } from './base-recommendation-service.class';
 import { Observable } from 'rxjs';
@@ -68,9 +68,10 @@ export class RecommendationQueryService extends BaseRecommendationQueryService {
 
     trackVisitor(
         url: string,
+        data: ITrackVisitorQueryOptions,
         config: IRecommendationQueryConfig
     ): Observable<EmptyResponse> {
-        return this.postResponse<void>(url, {}, {}, config).pipe(
+        return this.postResponse<void>(url, data, {}, config).pipe(
             map((response) => {
                 return baseMapper.getEmptyResponse(response);
             })
