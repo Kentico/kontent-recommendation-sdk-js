@@ -17,7 +17,7 @@ To get started, you'll first need to have access to your [Kentico Kontent](https
 
 ```
 npm i rxjs --save
-npm i @kentico/kontent-recommendation --save
+npm i @kentico/kontent-recommendations --save
 ```
 
 ### API
