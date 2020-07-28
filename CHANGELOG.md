@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/Kentico/kontent-recommendations-sdk-js/compare/v0.0.4...v0.0.5) (2020-07-28)
+
+
+### Bug Fixes
+
+* fixes base URL ([5b417dc](https://github.com/Kentico/kontent-recommendations-sdk-js/commit/5b417dc65b4c11fbe7712753bad3027e22d5198d))
+
 ### [0.0.4](https://github.com/Kentico/kontent-recommendations-sdk-js/compare/v0.0.3...v0.0.4) (2020-07-21)
 
 
@@ -26,4 +33,3 @@ All notable changes to this project will be documented in this file. See [standa
 * sets up readme, fixes codename prop in queries, adds data verification to tests ([60689ba](https://github.com/Kentico/kontent-recommendations-sdk-js/commit/60689bad9704a24c02b71b3bbbe31dd6312c8ebf))
 * sets up sdk & adds "recommend items" API endpoint ([92fd529](https://github.com/Kentico/kontent-recommendations-sdk-js/commit/92fd52959defc94fc4da89b4d72c0c462b555fd1))
 * switches conversion / portion / visit queries to use POST instead of Query params ([14226c7](https://github.com/Kentico/kontent-recommendations-sdk-js/commit/14226c79daba01d55e6e0267590b44119c04a2b0))
-
