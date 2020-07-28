@@ -21,7 +21,7 @@ export abstract class BaseRecommendationQueryService {
     /**
      * Default base url
      */
-    private readonly defaultBaseCMUrl: string = 'http://recommend.kontent.ai/api/v2//';
+    private readonly defaultBaseCMUrl: string = 'https://recommend.kontent.ai/api/v2/';
 
     constructor(
         protected readonly config: IRecommendationClientConfig,

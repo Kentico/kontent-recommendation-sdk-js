@@ -26,7 +26,7 @@ describe('Track visit', () => {
         const url = query.getUrl();
 
         expect(url).toEqual(
-            `http://recommend.kontent.ai/api/v2//track/visit`
+            `https://recommend.kontent.ai/api/v2/track/visit`
         );
     });
 

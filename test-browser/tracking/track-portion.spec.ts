@@ -27,7 +27,7 @@ describe('Track portion', () => {
         const url = query.getUrl();
 
         expect(url).toEqual(
-            `http://recommend.kontent.ai/api/v2//track/portion`
+            `https://recommend.kontent.ai/api/v2/track/portion`
         );
     });
 

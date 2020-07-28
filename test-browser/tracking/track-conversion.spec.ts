@@ -25,7 +25,7 @@ describe('Track conversion', () => {
         const url = query.getUrl();
 
         expect(url).toEqual(
-            `http://recommend.kontent.ai/api/v2//track/conversion`
+            `https://recommend.kontent.ai/api/v2/track/conversion`
         );
     });
 
