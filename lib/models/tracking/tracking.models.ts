@@ -17,3 +17,22 @@ export interface ITrackPortionQueryOptions {
 export interface ITrackVisitorQueryOptions {
     visitId: string;
 }
+
+export interface ITrackVisitorLocationDetailsOptions {
+    city?: string;
+    country?: string;
+    timezone?: string;
+}
+
+export interface ITrackVisitorVisitorOptions {
+    ip?: string;
+    referer?: string;
+    location?: ITrackVisitorLocationDetailsOptions;
+    custom?: any;
+}
+
+
+export interface ITrackVisitorQueryOptions {
+    visitId: string;
+    visitor: ITrackVisitorVisitorOptions;
+}

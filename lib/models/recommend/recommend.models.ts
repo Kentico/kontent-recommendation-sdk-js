@@ -17,19 +17,6 @@ export interface IRecommendationSettingsOptions {
     scenario?: string;
 }
 
-export interface IRecommendationLocationDetailsOptions {
-    city?: string;
-    country?: string;
-    timezone?: string;
-}
-
-export interface IRecommendationVisitorOptions {
-    ip?: string;
-    refered?: string;
-    location?: IRecommendationLocationDetailsOptions;
-    custom: any;
-}
-
 export interface IRecommendItemsQueryOptions {
     visitId: string;
     currentItemCodename: string;

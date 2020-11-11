@@ -11,6 +11,16 @@ describe('Track visitor', () => {
             .trackVisitor()
             .withData({
                 visitId: 'x',
+                visitor: {
+                    ip: 'y',
+                    custom: 'c',
+                    location: {
+                        city: 'LA',
+                        country: 'US',
+                        timezone: 'PST'
+                    },
+                    referer: 'x'
+                }
             });
 
            query.toObservable()
@@ -33,6 +43,16 @@ describe('Track visitor', () => {
 
         expect(data).toEqual({
             visitId: 'x',
+            visitor: {
+                ip: 'y',
+                custom: 'c',
+                location: {
+                    city: 'LA',
+                    country: 'US',
+                    timezone: 'PST'
+                },
+                referer: 'x'
+            }
         });
     });
 
