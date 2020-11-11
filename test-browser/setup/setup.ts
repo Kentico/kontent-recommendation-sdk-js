@@ -30,13 +30,14 @@ export const getTestClientWithInvalidApiKey: IRecommendationClient = new Recomme
     apiKey: 'xxx'
 });
 
-export const getTestClientWithBaseKontentError: (errorJson: any) => IRecommendationClient = (errorJson: any) => new RecommendationClient({
+export const getTestClientWithError: (errorJson: any) => IRecommendationClient = (errorJson: any) => new RecommendationClient({
     projectId: testProjectId,
     apiKey: 'xxx',
     httpService: new TestHttpService({
         fakeResponseJson: undefined,
         throwError: true,
-        errorJson: errorJson
+        errorJson: errorJson,
+        isAxiosError: true
     })
 });
 

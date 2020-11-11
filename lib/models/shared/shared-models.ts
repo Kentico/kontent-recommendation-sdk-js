@@ -1,4 +1,3 @@
-import { BaseKontentError } from '@kentico/kontent-core';
 
 export namespace SharedModels {
 
@@ -6,19 +5,31 @@ export namespace SharedModels {
         _raw: TContract;
     }
 
-    export class RecommendationBaseError extends BaseKontentError {
+    export class RecommendationBaseError {
+
+        public errors: any;
+        public type?: string;
+        public status?: number;
+        public detail?: string;
+        public instance?: string;
+        public traceId: string;
 
         constructor(data:
             {
-                message: string;
-                requestId: string;
-                errorCode: number;
-                specificCode: number;
-                originalError: any;
+                 errors: any;
+                 type?: string;
+                 status?: number;
+                 detail?: string;
+                 instance?: string;
+                 traceId: string;
             }
         ) {
-            super(data);
+            this.errors = data.errors;
+            this.type = data.type;
+            this.status = data.status;
+            this.detail = data.detail;
+            this.instance = data.instance;
+            this.traceId = data.traceId;
         }
-
     }
 }

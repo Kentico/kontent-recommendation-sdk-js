@@ -1,0 +1,13 @@
+{
+    "errors": {
+        "visitId": [
+            "No white space allowed"
+        ]
+    },
+    "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+    "title": "One or more validation errors occurred.",
+    "status": 400,
+    "traceId": "00-243f900e945668408bdd3bc85165a3f3-08fdfccd8e59164d-00",
+    "instance": "x",
+    "detail": "y"
+}

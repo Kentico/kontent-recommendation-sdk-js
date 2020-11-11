@@ -1,20 +1,19 @@
 import {
-    BaseKontentError,
     headerHelper,
     IBaseResponse,
-    IBaseResponseError,
     IHeader,
     IHttpService,
     IQueryParameter,
     ISDKInfo,
-    mapBaseKontentError,
     urlHelper,
 } from '@kentico/kontent-core';
 import { catchError } from 'rxjs/operators';
+import { AxiosError } from 'axios';
 
 import { IRecommendationClientConfig } from '../config/recommendation-client-config.interface';
 import { IRecommendationInternalQueryConfig, IRecommendationQueryConfig, SharedModels } from '../models';
 import { Observable, throwError } from 'rxjs';
+import { IRecommendationErrorResponseRaw } from '../responses/shared/shared-responses';
 
 export abstract class BaseRecommendationQueryService {
 
@@ -74,10 +73,9 @@ export abstract class BaseRecommendationQueryService {
     ): Observable<IBaseResponse<TRawData>> {
 
         return this.httpService
-            .patch<BaseKontentError | any, TRawData>(
+            .patch<TRawData>(
                 {
                     url: url,
-                    mapError: error => mapBaseKontentError(error),
                     body: body
                 },
                 {
@@ -89,8 +87,8 @@ export abstract class BaseRecommendationQueryService {
                 }
             )
             .pipe(
-                catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapRecommendationError(error.mappedError));
+                catchError((error: any) => {
+                    return throwError(this.mapRecommendationError(error));
                 }),
             );
     }
@@ -107,10 +105,9 @@ export abstract class BaseRecommendationQueryService {
     ): Observable<IBaseResponse<TRawData>> {
 
         return this.httpService
-            .get<BaseKontentError | any, TRawData>(
+            .get<TRawData>(
                 {
                     url: url,
-                    mapError: error => mapBaseKontentError(error)
                 },
                 {
                     retryStrategy: this.config.retryStrategy,
@@ -121,8 +118,8 @@ export abstract class BaseRecommendationQueryService {
                 }
             )
             .pipe(
-                catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapRecommendationError(error.mappedError));
+                catchError((error: any) => {
+                    return throwError(this.mapRecommendationError(error));
                 })
             );
     }
@@ -140,11 +137,10 @@ export abstract class BaseRecommendationQueryService {
         config: IRecommendationQueryConfig,
     ): Observable<IBaseResponse<TRawData>> {
         return this.httpService
-            .post<BaseKontentError | any, TRawData>(
+            .post<TRawData>(
                 {
                     url: url,
                     body: body,
-                    mapError: error => mapBaseKontentError(error)
                 },
                 {
                     retryStrategy: this.config.retryStrategy,
@@ -155,8 +151,8 @@ export abstract class BaseRecommendationQueryService {
                 }
             )
             .pipe(
-                catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapRecommendationError(error.mappedError));
+                catchError((error: any) => {
+                    return throwError(this.mapRecommendationError(error));
                 })
             );
     }
@@ -174,11 +170,10 @@ export abstract class BaseRecommendationQueryService {
         config: IRecommendationQueryConfig
     ): Observable<IBaseResponse<TRawData>> {
         return this.httpService
-            .put<BaseKontentError | any, TRawData>(
+            .put<TRawData>(
                 {
                     url: url,
                     body: body,
-                    mapError: error => mapBaseKontentError(error)
                 },
                 {
                     retryStrategy: this.config.retryStrategy,
@@ -189,8 +184,8 @@ export abstract class BaseRecommendationQueryService {
                 }
             )
             .pipe(
-                catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapRecommendationError(error.mappedError));
+                catchError((error: any) => {
+                    return throwError(this.mapRecommendationError(error));
                 })
             );
     }
@@ -208,10 +203,9 @@ export abstract class BaseRecommendationQueryService {
     ): Observable<IBaseResponse<TRawData>> {
 
         return this.httpService
-            .delete<BaseKontentError | any, TRawData>(
+            .delete<TRawData>(
                 {
                     url: url,
-                    mapError: error => mapBaseKontentError(error)
                 },
                 {
                     retryStrategy: this.config.retryStrategy,
@@ -222,26 +216,41 @@ export abstract class BaseRecommendationQueryService {
                 }
             )
             .pipe(
-                catchError((error: IBaseResponseError<BaseKontentError>) => {
-                    return throwError(this.mapRecommendationError(error.mappedError));
+                catchError((error: any) => {
+                    return throwError(this.mapRecommendationError(error));
                 })
             );
     }
 
     private mapRecommendationError(
-        error: BaseKontentError | any
+        error: any
     ): SharedModels.RecommendationBaseError | any {
-        if (error instanceof BaseKontentError) {
+        let axiosError: AxiosError | undefined;
 
-            return new SharedModels.RecommendationBaseError({
-                errorCode: error.errorCode,
-                message: error.message,
-                originalError: error.originalError,
-                requestId: error.requestId,
-                specificCode: error.specificCode,
-            });
+        if (error.error) {
+            axiosError = error.error;
+        } else {
+            axiosError = error;
         }
-        return error;
+
+        if (!axiosError || !axiosError.isAxiosError) {
+            return error;
+        }
+
+        const recommendationErrorData = axiosError.response?.data as IRecommendationErrorResponseRaw;
+
+        if (!recommendationErrorData || !recommendationErrorData.traceId) {
+            return error;
+        }
+
+        return new SharedModels.RecommendationBaseError({
+            traceId: recommendationErrorData.traceId,
+            errors: recommendationErrorData.errors,
+            detail: recommendationErrorData.detail,
+            instance: recommendationErrorData.instance,
+            status: recommendationErrorData.status,
+            type: recommendationErrorData.type
+        });
     }
 
     /**
