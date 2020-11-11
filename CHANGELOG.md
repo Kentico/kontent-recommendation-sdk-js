@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/Kentico/kontent-recommendations-sdk-js/compare/v0.0.7...v0.0.8) (2020-11-11)
+
+
+### Features
+
+* updates readme with track visitor sample ([a323616](https://github.com/Kentico/kontent-recommendations-sdk-js/commit/a323616c065e106f25ee2b84ff3b114bb79d0f9b))
+
 ### [0.0.7](https://github.com/Kentico/kontent-recommendations-sdk-js/compare/v0.0.6...v0.0.7) (2020-11-11)
 
 
