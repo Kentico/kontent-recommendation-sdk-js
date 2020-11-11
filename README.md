@@ -98,7 +98,17 @@ const client = new RecommendationClient({
 
 await client.trackVisitor()
     .withData({
-        visitId: 'z',
+        visitId: 'x',
+        visitor: {
+            ip: 'y',
+            custom: 'c',
+            location: {
+                city: 'LA',
+                country: 'US',
+                timezone: 'PST'
+            },
+            referer: 'x'
+        }
     }).toPromise();
 ```
 
