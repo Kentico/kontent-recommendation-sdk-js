@@ -1,13 +1,11 @@
-[![npm version](https://badge.fury.io/js/%40kentico%2Fkontent-recommendations.svg)](https://badge.fury.io/js/%40kentico%2Fkontent-recommendations)
-[![Build Status](https://api.travis-ci.com/Kentico/kontent-recommendations-sdk-js.svg?branch=master)](https://travis-ci.com/Kentico/kontent-recommendations-sdk-js)
-[![CircleCI](https://circleci.com/gh/Kentico/kontent-recommendations-sdk-js/tree/master.svg?style=svg)](https://circleci.com/gh/Kentico/kontent-recommendations-sdk-js/tree/master)
-[![Known Vulnerabilities](https://snyk.io/test/github/Kentico/kontent-recommendation-sdk-js/badge.svg)](https://snyk.io/test/github/kentico/kontent-recommendation-sdk-js)
-[![GitHub license](https://img.shields.io/github/license/Kentico/kontent-recommendation-sdk-js.svg)](https://github.com/Kentico/kontent-recommendations-sdk-js)
-![Gzip browser bundle](https://img.badgesize.io/https://cdn.jsdelivr.net/npm/@kentico/kontent-recommendations/_bundles/kontent-recommendation-sdk.umd.min.js?compression=gzip)
-
 # Kontent recommendation Javascript SDK
 
-> Javascript SDK for the `Kontent Recommendation SDK`. Works in `node.js` and `browsers`.
+[![No Maintenance Intended](https://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+## :warning: Deprecation Notice
+> Kontent's Recommendations API has been deprecated (see [changelog](https://docs.kontent.ai/changelog/product-changelog#a-deprecating-the-smart-recommendations-api)). We advise to use the underlying [Recombee](https://www.recombee.com/) service directly to recommend your content. 
+
+
+Javascript SDK for the `Kontent Recommendation SDK`. Works in `node.js` and `browsers`.
 
 ## Getting started
 
